@@ -26,3 +26,16 @@ res.send('NOT IMPLEMENTED: Bank delete DELETE ' + req.params.id);
 exports.bank_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Bank update PUT' + req.params.id);
 };
+
+// VIEWS
+// Handle a show all view
+exports.bank_view_all_Page = async function(req, res) {
+try{
+theBank = await Bank.find();
+res.render('Bank', { title: 'Bank Search Results', results: theBank });
+}
+catch(err){
+res.status(500);
+res.send(`{"error": ${err}}`);
+}
+}
