@@ -1,8 +1,15 @@
 var Bank = require('../models/Bank');
 // List of all Bank
-exports.bank_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Bank list');
-};
+exports.bank_list = async function(req, res) {
+    try{
+    theBank = await Bank.find();
+    res.send(theBank);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
 // for a specific Bank.
 exports.bank_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Bank detail: ' + req.params.id);
