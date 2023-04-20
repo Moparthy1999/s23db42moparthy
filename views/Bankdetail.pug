@@ -1,0 +1,23 @@
+extends layout
+block content
+    h1= title
+    if(toShow==null)
+        h2 Instance not found
+    else
+        - let bankid = toShow._id
+        - let Bank_Name = toShow.Bank_Name
+        - let Bank_Branch = toShow.Bank_Branch
+        - let Bank_Code = toShow.Bank_Code
+        div
+            div.row
+                div(class='BankAttr mr-3') bank ID is:
+                div #{teacherid}
+            div.row
+                div(class='BankAttr mr-3') bank Name is:
+                div #{Bank_Name}
+            div.row
+                div(class='BankAttr mr-3')  Bank Branch is:
+                div #{Bank_Branch}
+            div.row
+                div(class='BankAttr mr-3') Bank Code is:
+                div #{Bank_Code}
