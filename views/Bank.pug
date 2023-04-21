@@ -5,14 +5,13 @@ block content
     -
      //let results = [{"Bank_Name": "Indian Bank", "Bank_Branch": "Amaravati", "Bank_Code": "086450",},{ "Bank_Name": "Us Bank", "Bank_Branch": "Maryville", "Bank_Code": "12345",}, {"Bank_Name": "Andhra Bank", "Bank_Branch": "Tadikonda", "Bank_Code": "256794",}]
      let items=results
-    div(class= "container-fluid")
-        div(class = "row")  
-            each item, index in items
-                div(class= "col-sm-2", onclick=`buy(${index})`) Bank_Name :  #{item.Bank_Name}
-                div(class= "col-sm-2", onclick=`buy(${index})`) Bank_Branch:  #{item.Bank_Branch}
-                div(class= "col-sm-2", onclick=`buy(${index})`) Bank_Code:   #{item.Bank_Code}
-
+    div(class="container-fluid")
+        div(class="row m-1")
+            each item in items
+                - let destination = `dispatch(\"/Bank/update?id=${item._id}\")`
+                div(class="row-sm-2", class="m-1") Item #{item.Bank_Name}(#{item.Bank_Branch}) is #{item.Bank_Code}
+                    button.btn( class="btn-primary ml-1", onclick= destination) Update
     script.
-        function buy(itemNumber){
-        alert(`You purchased item ${itemNumber+1}`)
+        function dispatch(path){
+            window.location.href=path
         }
