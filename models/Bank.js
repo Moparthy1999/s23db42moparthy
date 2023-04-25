@@ -1,7 +1,15 @@
 const mongoose = require("mongoose")
 const bankSchema = mongoose.Schema({
-Bank_Name: String,
-Bank_Branch: String,
+Bank_Name: {
+    type: String,
+    minlength:3,
+    maxlength:30
+},
+Bank_Branch: {
+    type: String,
+    minlength:3,
+    maxlength:30
+},
 Bank_Code: String
 })
 module.exports = mongoose.model("Bank",

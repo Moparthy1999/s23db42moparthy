@@ -18,12 +18,12 @@ router.get('/', bank_controlers.bank_view_all_Page );
 router.get('/detail', bank_controlers.bank_view_one_Page);
 
 /* GET create costume page */
-router.get('/create', bank_controlers.bank_create_Page);
+router.get('/create', secured, bank_controlers.bank_create_Page);
 
 /* GET create update page */
 router.get('/update', secured, bank_controlers.bank_update_Page);
 
 /* GET delete costume page */
-router.get('/delete', bank_controlers.bank_delete_Page);
+router.get('/delete', secured, bank_controlers.bank_delete_Page);
 
 module.exports = router
